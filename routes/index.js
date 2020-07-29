@@ -7,8 +7,10 @@ router.get('/', function(req, res){
     res.render("login");
 })
 
+
+
 router.post('/', function(req, res){
-    res.send("reached");
+    res.render('resturant');
 })
 
 module.exports = router;
