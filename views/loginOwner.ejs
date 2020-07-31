@@ -58,13 +58,13 @@ body {
     
   </head>
 
-    <!-- <body> -->
-      <body class="text-center">
-      <form class="form-signin" action="/user" method="POST">
 
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <body class="text-center">
+      <form class="form-signin" action="/owner" method="POST">
+
+      <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
       <!-- <label for="inputEmail" class="sr-only">User ID</label> -->
-      <input type="text" name="userId" id="inputId" class="form-control" placeholder="User Id" required autofocus>
+      <input type="text" name="ownerId" id="inputId" class="form-control" placeholder="Owner Id" required autofocus>
       <!-- <label for="inputPassword" class="sr-only">Password</label> -->
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
@@ -74,14 +74,9 @@ body {
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-      <a href="register">Not a user, Register Now</a> 
+      <!-- <a href="register">Not a user, Register Now</a>  -->
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
     </form>
-
-    <!-- <form class="form-signin" action='/' method="POST">
-      <a href='#'>Not a user, Register Now</a>
-    </form> -->
-
   
     </body>
 </html>

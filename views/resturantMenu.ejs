@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <head>
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <style>
+        .menu{
+            margin-left: auto;
+            margin-right: auto;
+        }
+      </style>
+    
+  </head>
+
+      <body class="text-center">
+
+      <!-- /* <form class="form-signin" action="/user" method="POST"> */ -->
+        <div>
+            <table class="menu">
+      <% for(var i=0; i<food.length; i++){ %>
+              <tr>
+                  <td><%= food[i] %></td>
+                  <td><%= price[i] %></td>
+                  <td><input type="checkbox" ></td>
+              </tr>
+              <% } %>
+          </table>
+        </div>
+    <!-- /* </form> */ -->
+
+  
+    </body>
+</html>
