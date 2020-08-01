@@ -25,6 +25,10 @@
             width: 80px;
         }
 
+        input[type=text]{
+            width: 40px;
+        }
+
         .addToCart span{
             display: inline-block;
             width: 30px;
@@ -45,6 +49,11 @@
             text-align: center;
         }
 
+        .form1{
+            margin-left: 400px;
+            
+        }
+
         
       </style>
      
@@ -59,44 +68,46 @@
             </p>
           </nav>
 
-      <form  action="/submitOrder" method="POST">
-        <div>
-            <table class="menu">
-                <tr>
-                    <th>Food</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-                 <% for(var i=0; i<food.length; i++){ %>
-              <tr>
-                  <td><%= food[i] %></td>
-                  <td><%= price[i] %></td>
-                
-                  <td class="addToCart">
-                    <span id="<%= i%>" class="count">0</span>
-                    <span class="btn btn-primary add" onclick="add('#<%= i %>')">+</span>
-                    <span class="btn btn-primary remove" onclick="substract('#<%= i%>')">-</span>
-                  </td>
-              </tr>
-              <% } %>
-          </table>
-         
-          <button type="submit" class="btn btn-primary placeOrder">Place Order</button>
+     <form class="form-signin" action="/user/submitorder" method="POST">
+        <div class="form1">
+         <div class="row">
+             <h6 class="col-2">Food</h6>
+             <h6 class="col-2">Price</h6>
+             <h6 class="col-2">Quanity</h6>
         </div>
+        <% for(var i=0; i<food.length; i++){ %>
+            <div class="row">
+                <label class="col-2"><%= food[i] %></label>
+                <label class="col-2"><%= price[i] %></label>
+              
+                <label class="col-2">
+                
+                  <!-- <label for="count" name="<%= i%>" id="<%= i%>" class="count">0</label> -->
+                  <input type="text" name="<%=i%>" id="<%=i%>" value="0">
+                  <span  class="btn btn-primary add" onclick="add('#<%= i %>')">+</span>
+                  <span  class="btn btn-primary remove" onclick="substract('#<%= i%>')">-</span>
+                </label>
+            </div>
+            <% } %>
+        </div>
+        <button type="submit" class="btn btn-primary placeOrder">Place Order</button>
      </form>
+
+
      <script>
     function add(id) {
         console.log('here', id);
-        console.log($(id).text());
-        var newCount = parseInt($(id).text()) + 1;
-        $(id).text(newCount);
+        console.log($(id).val());
+        var newCount = parseInt($(id).val()) + 1;
+        // $(id).text(newCount);
+        $('input[type=text]'+id).val(newCount);
     }
 
     function substract(id) {
-        var newCount = parseInt($(id).text()) - 1;
-        $(id).text(Math.max(0,newCount));
+        var newCount = parseInt($(id).val()) - 1;
+        $('input[type=text]'+id).val(Math.max(0,newCount));
     }
         
-      </script>
+    </script>
     </body>
 </html>

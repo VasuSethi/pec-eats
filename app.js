@@ -8,13 +8,14 @@ const session = require('express-session');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-  }))
+// app.use(session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { secure: true }
+//   }))
 
 
 const index = require("./routes/index.js");
@@ -22,6 +23,7 @@ const adminPage = require("./routes/admin.js");
 const resturants = require("./routes/resturants");
 const register = require("./routes/register");
 const owner = require('./routes/owner');
+const submitOrder = require('./routes/submitOrder');
 // const resturantMenu = require('./routes/resturantMenu');
 
 
@@ -30,6 +32,7 @@ app.use('/user/resturants', resturants)
 app.use('/user', index);
 app.use('/register', register);
 app.use('/owner', owner);
+app.use('/user/submitorder', submitOrder);
 // app.use('/user/resturantMenu', resturantMenu);
 
 

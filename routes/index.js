@@ -11,7 +11,7 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
     const userId = req.body.userId;
-    console.log(userId, req.body.password);
+    console.log(req.body, '-------');
     User.findOne({userId: userId}, function(err, doc){
         console.log('---', err, doc);
         if (err || doc===null){
