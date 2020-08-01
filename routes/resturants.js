@@ -33,7 +33,7 @@ router.get('/:customName', function(req, res){
 
         console.log(result.menu, "here");
         
-        res.render("resturantMenu", {food: result.menu[0], price: result.menu[1]});
+        res.render("resturantMenu", {resName:customName, food: result.menu[0], price: result.menu[1]});
     })
     
 })

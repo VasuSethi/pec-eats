@@ -4,32 +4,99 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <style>
         .menu{
+            margin-top: 100px;
             margin-left: auto;
             margin-right: auto;
         }
+
+        
+
+        td{
+            width: 250px;
+            padding: 10px;
+        }
+
+        input[type=number]{
+            width: 80px;
+        }
+
+        .addToCart span{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .add, .remove {
+        cursor: pointer;
+        }
+
+        .placeOrder{
+            margin-top: 40px;
+        }
+
+        .btn{
+            text-align: center;
+        }
+
+        
       </style>
+     
     
   </head>
 
       <body class="text-center">
 
-      <!-- /* <form class="form-signin" action="/user" method="POST"> */ -->
+        <nav class="navbar navbar-light bg-light header">
+            <p class="navbar-brand">
+              <%= resName %>
+            </p>
+          </nav>
+
+      <form  action="/submitOrder" method="POST">
         <div>
             <table class="menu">
-      <% for(var i=0; i<food.length; i++){ %>
+                <tr>
+                    <th>Food</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                 <% for(var i=0; i<food.length; i++){ %>
               <tr>
                   <td><%= food[i] %></td>
                   <td><%= price[i] %></td>
-                  <td><input type="checkbox" ></td>
+                
+                  <td class="addToCart">
+                    <span id="<%= i%>" class="count">0</span>
+                    <span class="btn btn-primary add" onclick="add('#<%= i %>')">+</span>
+                    <span class="btn btn-primary remove" onclick="substract('#<%= i%>')">-</span>
+                  </td>
               </tr>
               <% } %>
           </table>
+         
+          <button type="submit" class="btn btn-primary placeOrder">Place Order</button>
         </div>
-    <!-- /* </form> */ -->
+     </form>
+     <script>
+    function add(id) {
+        console.log('here', id);
+        console.log($(id).text());
+        var newCount = parseInt($(id).text()) + 1;
+        $(id).text(newCount);
+    }
 
-  
+    function substract(id) {
+        var newCount = parseInt($(id).text()) - 1;
+        $(id).text(Math.max(0,newCount));
+    }
+        
+      </script>
     </body>
 </html>
