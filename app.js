@@ -25,7 +25,7 @@ const register = require("./routes/register");
 const owner = require('./routes/owner');
 const submitOrder = require('./routes/submitOrder');
 const orderPlaced = require('./routes/orderPlaced');
-// const resturantMenu = require('./routes/resturantMenu');
+const removeOrder = require('./routes/removeOrder');
 
 
 app.use('/admin', adminPage);
@@ -35,6 +35,7 @@ app.use('/register', register);
 app.use('/owner', owner);
 app.use('/user/submitorder', submitOrder);
 app.use('/user/orderPlaced', orderPlaced);
+app.use('/removeOrder', removeOrder);
 // app.use('/user/resturantMenu', resturantMenu);
 
 

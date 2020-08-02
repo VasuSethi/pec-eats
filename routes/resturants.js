@@ -7,22 +7,14 @@ const Resturant = require('../db').Resturant;
 
 
 router.get('/', function(req, res){
-    res.render('resturants');
-    // const combo = new Resturant({
-    //     resId: "01",
-    //     resName: "combo",
-    //     // menu: [
-    //     //     {fried_rice_rajma: 70},
-    //     //     {fried_rice_dal: 70},
-    //     //     {thali: 100},
-    //     //     {lacha_parantha: 60},
-    //     //     {paneer_roti: 80}
-    //     // ]
-    //     menu: [['fried rice rajma', 'fried rice dal', 'thali', 'lacha parantha', 'paneer roti'], [70, 70, 100, 60, 80]]
-    // })
-    // console.log(combo);
+    // const deshraj = new Resturant({
+    //     resId: "03",
+    //     resName: "deshraj",
+    //     menu: [['Channa Samosa', 'Samosa', 'Patty', 'Omlette', 'Cold drink', 'Maggi'], [30, 10, 20, 50, 15, 20]]
+    // });
+    // console.log(deshraj);
 
-    // combo.save();
+    // deshraj.save();
 })
 
 router.post('/:customName', function(req, res){

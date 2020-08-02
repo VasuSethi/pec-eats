@@ -39,17 +39,18 @@
         cursor: pointer;
         }
 
-        .placeOrder{
-            margin-top: 40px;
+        .orderComplete{
+            margin-top: 10px;
+            text-align: left;
+            margin-bottom: 20px;
         }
 
         .btn{
             text-align: center;
         }
 
-        .form1{
-            margin-left: 400px;
-            
+        .bill{
+            margin-top: 10px;
         }
 
         
@@ -62,27 +63,39 @@
 
         <nav class="navbar navbar-light bg-light header">
             <p  class="navbar-brand">
-              <%= resName %>Orders
+              <%= resName %> Orders
             </p>
           </nav>
 
-     <form class="form-signin" action="/user/submitorder" method="POST">
+
         <div class="form1">
         <% for(var i=0; i<orders.length; i++){ %>
-            <div class="row">
-                <label class="col-2"><%= orders[i].orderId %></label>
                 
-                <label class="col-2">
+                <h6 class="col-12">Order No. <%= orders[i].orderId %></h6>
+                <div class="row" style="margin-bottom: 10px;">
+                <h6 class="col-4">Customer Name: <%= orders[i].user.name %></h6>
+                <h6 class="col-4">Customer Address: <%= orders[i].user.address %></h6>
+                <h6 class="col-4">Customer Contact: <%= orders[i].user.phoneNo %></h6>
+                </div>
+                <% for (var j=0;j<orders[i].items.menu.length;j++){ %>
+                    <div class="row">
+                    <h6 class="col-4"><%=orders[i].items.menu[j][0] %></h6>
+                    <!-- <h6 class="col-4"><%=orders[i].items.menu[j][1] %></h6> -->
+                    <h6 class="col-1"><%=orders[i].items.menu[j][2] %></h6>
+                    </div>
+                <% } %>
                 
                   <!-- <label for="count" name="<%= i%>" id="<%= i%>" class="count">0</label> -->
-                  <h6><%= orders[i].items.bill %></h6>
-                </label>
-                
-            </div>
+                  <h3 class="bill col-4">Bill: <%= orders[i].items.bill %></h3>
+                  <input type="hidden" name="orderId" value="<%= orders[i].orderId %>">
+                <form class="form-signin" action="/removeOrder" method="POST">
+                    <input type="hidden" name="orderId" value="<%=orders[i].orderId%>">
+                  <button type="submit" class="btn btn-primary orderComplete" name="btn" value="owner">Order Completed</button>
+                  <hr>
+               </form>
             <% } %>
         </div>
-        <button type="submit" class="btn btn-primary placeOrder">Order Completed</button>
-     </form>
+        
 
 
      <script>

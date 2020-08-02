@@ -67,7 +67,7 @@ router.post("/",async function(req, res){
 
         order.save();
         
-        res.render("submitOrder", {user:user, resName:resName, order: finalOrder, bill:bill});
+        res.render("submitOrder", {user:user, resName:resName, order: finalOrder, bill:bill, orderId:id});
     })
 
 

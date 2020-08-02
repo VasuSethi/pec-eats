@@ -102,9 +102,11 @@
         </div>
         
         <input type="hidden" value="<%= resName %>" name="resName">
+        <input type="hidden" name="orderId" value="<%=orderId%>">
         <div class="footer">
         <label class="col-2">Final Order: <%= bill %></label>
         <button type="submit" class="btn btn-primary placeOrder">Place Order</button>
+        <button type="submit" class="btn btn-warning" name="btn" value="user" formaction="/removeOrder">Cancel Order</button>
         </div>
      </form>
 

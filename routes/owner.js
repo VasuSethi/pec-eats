@@ -14,6 +14,7 @@ function getResturantOrder(resId){
     console.log('inside getresturantoder', resId);
     return new Promise(function(resolve, reject){
         Order.find({resId:resId}, function(error, document){
+            console.log(document);
             resolve(document);
         })
     })
@@ -34,7 +35,7 @@ router.post('/', function(req, res){
                 console.log(req.body.password, doc.password);
 
                 if (req.body.password === doc.password){
-                    orders = await getResturantOrder(doc.resId);
+                    const orders = await getResturantOrder(doc.resId);
                     console.log('order', orders.items);
                     res.render('checkOrders', {resName: doc.resName, orders: orders});
                 }
