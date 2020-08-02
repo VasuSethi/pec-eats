@@ -30,6 +30,7 @@
                 <a class="navbar-brand" href="#">
                   Resturants
                 </a>
+                <p>User Id: <%=userId %></p>
               </nav>
             
             
@@ -41,7 +42,11 @@
                         <div class="card-body">
                           <h5 class="card-title">Combo</h5>
                           <p class="card-text">North Indian food</p>
-                          <a href="/user/resturants/combo" class="btn btn-primary">Order Now</a>
+                          <form action="user/resturants/combo" method="POST">
+                            <input type="hidden" name="userId" value="<%=userId %>">
+                            <button type="submit" class="btn btn-primary">Order Now</button>
+                          </form>
+              
                         </div>
                       </div>
 
@@ -50,7 +55,10 @@
                         <div class="card-body">
                           <h5 class="card-title">Anna</h5>
                           <p class="card-text">South Indian food</p>
-                          <a href="user/resturants/anna" class="btn btn-primary">Order Now</a>
+                          <form action="user/resturants/anna" method="POST">
+                            <input type="hidden" name="userId" value="<%=userId %>">
+                            <button type="submit" class="btn btn-primary">Order Now</button>
+                          </form>
                         </div>
                       </div>
 
@@ -59,7 +67,10 @@
                         <div class="card-body">
                           <h5 class="card-title">Desh Raj</h5>
                           <p class="card-text">Snacks and Tea</p>
-                          <a href="user/resturants/deshraj" class="btn btn-primary">Order Now</a>
+                          <form action="user/resturants/deshraj" method="POST">
+                            <input type="hidden" name="userId" value="<%=userId %>">
+                            <button type="submit" class="btn btn-primary">Order Now</button>
+                          </form>
                         </div>
                       </div>
                   

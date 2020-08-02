@@ -11,11 +11,10 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
     const userId = req.body.userId;
-    console.log(req.body, '-------');
     User.findOne({userId: userId}, function(err, doc){
-        console.log('---', err, doc);
+        
         if (err || doc===null){
-        console.log('erro', err);
+        
         res.sendFile('failureLogin.html', {root: './public'});
         }
 
@@ -24,7 +23,7 @@ router.post('/', function(req, res){
             bcrypt.compare(req.body.password, doc.password, function(err, result) {
                 console.log(req.body.password, doc.password);
                 if (result==true){
-                    res.render('resturants');
+                    res.render('resturants', {userId:userId});
                 }
 
                 else{

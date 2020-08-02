@@ -23,12 +23,23 @@ const resturantSchema = new mongoose.Schema ({
     menu: [mongoose.Schema.Types.Mixed]
 });
 
+const orderSchema = new mongoose.Schema({
+    orderId: String,
+    items: mongoose.Schema.Types.Mixed,
+    user: mongoose.Schema.Types.Mixed,
+    resName: String,
+    resId: String
+});
+
+
 const User = mongoose.model("User", userSchema);
 const Owner = mongoose.model("Owner", ownerSchema);
 const Resturant = mongoose.model('Resturant', resturantSchema);
+const Order = mongoose.model('Order', orderSchema)
 
 module.exports = {
     User: User,
     Owner: Owner,
-    Resturant: Resturant
+    Resturant: Resturant,
+    Order: Order,
 }

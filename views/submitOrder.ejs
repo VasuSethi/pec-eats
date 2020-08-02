@@ -39,8 +39,12 @@
         cursor: pointer;
         }
 
-        .placeOrder{
-            margin-top: 40px;
+        .header{
+            margin-bottom: 20px;
+        }
+
+        .footer{
+            margin-top: 50px;
         }
 
         .btn{
@@ -48,6 +52,7 @@
         }
 
         .form1{
+            margin-top: 20px;
             margin-left: 400px;
             
         }
@@ -61,58 +66,47 @@
       <body class="text-center">
 
         <nav class="navbar navbar-light bg-light header">
-            <p  class="navbar-brand">
-              <%= resName %>
-            </p>
-            <p>
-                User Id: <%= userId %>
+            <p class="navbar-brand">
+              Order Summary
             </p>
           </nav>
 
-     <form class="form-signin" action="/user/submitorder" method="POST">
+        <div class="row">
+            <h6 class="col-12">Name: <%= user.name %></h6>
+        </div>
+        <div class="row">
+            <h6 class="col-12">Email: <%= user.email %></h6>
+        </div>
+        <div class="row">
+            <h6 class="col-12">Phone Number: <%= user.phoneNo %></h6>
+        </div>
+        <div class="row">
+            <h6 class="col-12">Address: <%= user.address %></h6>
+        </div>
+
+     <form class="form-signin" action="/user/orderPlaced" method="POST">
         <div class="form1">
          <div class="row">
              <h6 class="col-2">Food</h6>
              <h6 class="col-2">Price</h6>
              <h6 class="col-2">Quanity</h6>
         </div>
-        <% for(var i=0; i<food.length; i++){ %>
+        <% for(var i=0; i<order.length; i++){ %>
             <div class="row">
-                <label class="col-2"><%= food[i] %></label>
-                <label class="col-2"><%= price[i] %></label>
-                
-                <label class="col-2">
-                
-                  <!-- <label for="count" name="<%= i%>" id="<%= i%>" class="count">0</label> -->
-                  <input type="text" name="<%=i%>" id="<%=i%>" value="0">
-                  <span  class="btn btn-primary add" onclick="add('#<%= i %>')">+</span>
-                  <span  class="btn btn-primary remove" onclick="substract('#<%= i%>')">-</span>
-                </label>
-                
+                <label class="col-2"><%= order[i][0] %></label>
+                <label class="col-2"><%= order[i][1] %></label>
+                <label class="col-2"><%= order[i][2] %></label>
+                    
             </div>
             <% } %>
         </div>
-        <input type="hidden" value="<%= food.length %>" name="length">
+        
         <input type="hidden" value="<%= resName %>" name="resName">
-        <input type="hidden" value="<%= userId %>" name="userId">
+        <div class="footer">
+        <label class="col-2">Final Order: <%= bill %></label>
         <button type="submit" class="btn btn-primary placeOrder">Place Order</button>
+        </div>
      </form>
 
-
-     <script>
-    function add(id) {
-        console.log('here', id);
-        console.log($(id).val());
-        var newCount = parseInt($(id).val()) + 1;
-        // $(id).text(newCount);
-        $('input[type=text]'+id).val(newCount);
-    }
-
-    function substract(id) {
-        var newCount = parseInt($(id).val()) - 1;
-        $('input[type=text]'+id).val(Math.max(0,newCount));
-    }
-        
-    </script>
     </body>
 </html>

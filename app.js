@@ -24,6 +24,7 @@ const resturants = require("./routes/resturants");
 const register = require("./routes/register");
 const owner = require('./routes/owner');
 const submitOrder = require('./routes/submitOrder');
+const orderPlaced = require('./routes/orderPlaced');
 // const resturantMenu = require('./routes/resturantMenu');
 
 
@@ -33,6 +34,7 @@ app.use('/user', index);
 app.use('/register', register);
 app.use('/owner', owner);
 app.use('/user/submitorder', submitOrder);
+app.use('/user/orderPlaced', orderPlaced);
 // app.use('/user/resturantMenu', resturantMenu);
 
 

@@ -25,15 +25,13 @@ router.get('/', function(req, res){
     // combo.save();
 })
 
-router.get('/:customName', function(req, res){
+router.post('/:customName', function(req, res){
     const customName = req.params.customName;
-    console.log('customName: ',customName);
+    const userId = req.body.userId;
     Resturant.findOne({resName: customName}, function(err, result){
         if (err) throw err;
-
-        console.log(result.menu, "here");
         
-        res.render("resturantMenu", {resName:customName, food: result.menu[0], price: result.menu[1]});
+        res.render("resturantMenu", {userId: userId, resName:customName, food: result.menu[0], price: result.menu[1]});
     })
     
 })
